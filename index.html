@@ -14,7 +14,7 @@
 	</head>
 	<body>
 		<!-- Шапка -->
-		<header>
+		<header class="page-header">
 			<div class="container">
 				<div class="head-container">
 					<div class="head-links">
@@ -536,5 +536,9 @@
 				</div>
 			</div>
 		</footer>
+		<script>
+			const { height: pageHeaderHeight } = document.querySelector(".head-container").getBoundingClientRect()
+			document.body.style.paddingTop = `${pageHeaderHeight}`
+		</script>
 	</body>
 </html>
