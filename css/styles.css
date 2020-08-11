@@ -10,6 +10,7 @@ body {
 	color: var(--primary-text-color);
 	font-family: Roboto, sans-serif;
 	letter-spacing: 0.03em;
+	padding-top: 80px;
 }
 :root {
 	--primary-text-color: #212121;
@@ -66,6 +67,57 @@ img {
 	line-height: 1.17;
 	text-align: center;
 }
+/* Модальное меню */
+.backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.2);
+	opacity: 1;
+	transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	z-index: 2;
+}
+.backdrop.is-hidden {
+	opacity: 0;
+	pointer-events: none;
+}
+.backdrop.is-hidden .modal {
+	transform: translate(-50%, -50%) scale(1.2);
+}
+.modal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(1);
+	min-width: 528px;
+	min-height: 581px;
+	background-color: var(--white-text-color);
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+}
+.modal-close {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: var(--white-text-color);
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+}
+.modal-close-button {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+}
+.modal .banner-button {
+	position: absolute;
+	left: 164px;
+	bottom: 40px;
+}
 /* Логотипы и кнопки */
 .button {
 	color: var(--white-text-color);
@@ -106,12 +158,13 @@ img {
 }
 /* Шапка */
 .page-header {
-	background-color: #fff;
 	position: fixed;
 	width: 100%;
 	min-height: 80px;
 	top: 0;
 	left: 0;
+	background-color: #fff;
+	z-index: 1;
 }
 .head-container {
 	display: inline-flex;
@@ -151,6 +204,18 @@ img {
 }
 .link.current {
 	color: var(--accent-text-color);
+	position: relative;
+}
+.link.current::after {
+	content: " ";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	display: block;
+	width: 100%;
+	height: 4px;
+	border-radius: 2px;
+	background-color: var(--accent-text-color);
 }
 .head-contacts {
 	display: flex;
@@ -226,6 +291,7 @@ img {
 	margin-top: 30px;
 	font-weight: bold;
 }
+
 /* Преимущества */
 .benefits-list {
 	display: flex;
@@ -482,16 +548,23 @@ img {
 	overflow: hidden;
 }
 .cards-thumb::before {
+	position: absolute;
 	content: " ";
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
-	position: absolute;
 	display: inline-block;
 	background-color: rgba(33, 150, 243, 0.9);
+	transform: translateY(100%);
+	transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 	opacity: 0;
 }
-.cards-thumb:hover::before {
+.cards:hover .cards-thumb::before {
+	content: " ";
 	opacity: 1;
+	transform: translateY(0);
+	overflow: hidden;
 }
 .thumb-text {
 	position: absolute;
@@ -499,7 +572,6 @@ img {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	overflow: hidden;
 	width: 322px;
 	margin: auto;
 	font-family: inherit;
@@ -510,8 +582,8 @@ img {
 	color: var(--white-text-color);
 }
 
-.thumb-text:hover,
-.thumb-text:focus {
+.cards:hover .thumb-text,
+.cards:focus .thumb-text {
 	opacity: 1;
 }
 .cards-text {

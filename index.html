@@ -69,8 +69,18 @@
 					<br />
 					для вашего бизнеса
 				</h1>
-				<button type="button" class="banner-button button">Заказать услугу</button>
+				<button type="button" class="banner-button button" data-modal-open>Заказать услугу</button>
 			</section>
+			<div class="backdrop is-hidden" data-modal>
+				<div class="modal">
+					<div class="modal-close">
+						<svg class="modal-close-button" height="11" width="11" data-modal-close>
+							<use href="./images/sprite.svg#cross"></use>
+						</svg>
+					</div>
+					<button type="button" class="banner-button button">Отправить</button>
+				</div>
+			</div>
 			<!-- Под баннером -->
 			<section class="benefits section">
 				<div class="container">
@@ -536,9 +546,6 @@
 				</div>
 			</div>
 		</footer>
-		<script>
-			const { height: pageHeaderHeight } = document.querySelector(".head-container").getBoundingClientRect()
-			document.body.style.paddingTop = `${pageHeaderHeight}`
-		</script>
+		<script src="./js/modal.js"></script>
 	</body>
 </html>
