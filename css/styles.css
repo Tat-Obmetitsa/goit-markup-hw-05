@@ -699,6 +699,7 @@ img {
 	padding: 10px 10px 10px 29px;
 	margin-left: 12px;
 	color: var(--white-text-color);
+	font-weight: bold;
 	text-align: center;
 	line-height: 1.9;
 	letter-spacing: 0.06em;
