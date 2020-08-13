@@ -504,6 +504,7 @@ img {
 	font-family: inherit;
 	font-weight: 500;
 	font-size: 16px;
+	letter-spacing: 0.03em;
 	line-height: 1.6;
 	box-shadow: none;
 	border-radius: 4px;
