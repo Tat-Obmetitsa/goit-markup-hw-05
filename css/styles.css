@@ -528,7 +528,7 @@ img {
 .cards {
 	width: 370px;
 	margin-right: 30px;
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 	transition: 250ms box-shadow cubic-bezier(0.4, 0, 0.2, 1);
 }
 .cards:hover,
